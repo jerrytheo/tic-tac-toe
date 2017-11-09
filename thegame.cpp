@@ -2,6 +2,13 @@
 #include <cstdlib>
 using namespace std;
 
+char insults[5][256] = {
+	"First step beating you. Next step World Domination",
+	"Hehehehe. You lose.",
+	"Rematch? It won't change the outcome.",
+	"What came first the chicken or the egg? Never mind, it's me."
+};
+
 
 /* The tic-tac-toe board. */
 class Board {
@@ -158,7 +165,8 @@ int main() {
 
 	char winner = board.winner();
 	if (winner == 0) cout << "It's a draw!" << endl;
-	else cout << "Winner is: " << ((winner == user) ? "Player" : "AI") << endl;
+	else if (winner == user) cout << "You got lucky!" << endl;
+	else cout << insults[rand() % 4] << endl;
 
 	return 0;
 }
