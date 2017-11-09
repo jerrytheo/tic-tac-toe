@@ -26,7 +26,7 @@ Board::Board() {
 int Board::winner() {
 	for (int ch=1; ch <= 2; ++ch) {
 		char chk = ((ch == 1) ? 'X' : 'O');
-		for (int i=0; i<2; ++i) {
+		for (int i=0; i<3; ++i) {
 			if (board[i][0] == chk && board[i][1] == chk && board[i][2] == chk) return chk;
 			if (board[0][i] == chk && board[1][i] == chk && board[2][i] == chk) return chk;
 		}
