@@ -2,11 +2,10 @@
 #include <cstdlib>
 using namespace std;
 
-char insults[5][256] = {
-	"First step beating you. Next step World Domination",
-	"Hehehehe. You lose.",
+char insults[3][256] = {
+	"First step beating you. Next step World Domination.",
 	"Rematch? It won't change the outcome.",
-	"What came first the chicken or the egg? Never mind, it's me."
+	"What came first the chicken or the egg? Never mind, it's me.",
 };
 
 
@@ -66,11 +65,13 @@ void Board::clear(unsigned int x, unsigned int y) {
 
 /* Draw the board on screen. */
 void Board::draw() {
-	cout << " " << board[0][0] << " | " << board[0][1] << " | " << board[0][2] << endl;
-	cout << "---|---|---" << endl;
-	cout << " " << board[1][0] << " | " << board[1][1] << " | " << board[1][2] << endl;
-	cout << "---|---|---" << endl;
-	cout << " " << board[2][0] << " | " << board[2][1] << " | " << board[2][2] << endl;
+	cout <<  endl;
+	cout << "\t   " << board[0][0] << " | " << board[0][1] << " | " << board[0][2] << endl;
+	cout << "\t  ---|---|---" << endl;
+	cout << "\t   " << board[1][0] << " | " << board[1][1] << " | " << board[1][2] << endl;
+	cout << "\t  ---|---|---" << endl;
+	cout << "\t   " << board[2][0] << " | " << board[2][1] << " | " << board[2][2] << endl;
+	cout << endl << endl;
 }
 
 
@@ -151,7 +152,7 @@ int main() {
 		if (user_turn) {
 			unsigned int pos;
 			do {
-				cout << "Enter position: ";
+				cout << "\tEnter position: ";
 				cin >> pos;
 				if (pos < 1 || pos > 9) continue; 
 			} while (!board.add((pos-1)/3, (pos-1)%3, user));
@@ -164,11 +165,11 @@ int main() {
 	}
 
 	char winner = board.winner();
-	if (winner == 0) cout << "It's a draw!" << endl;
-	else if (winner == user) cout << "You got lucky!" << endl;
-	else cout << insults[rand() % 4] << endl;
+	if (winner == 0) cout << "\tThat's the best you can do. It's a draw!" << endl;
+	else if (winner == user) cout << "\tYou got lucky!" << endl;
+	else cout << "\t" << insults[rand() % 3] << "\n\n\n\n\n";
 
 	return 0;
 }
 
-// vim:ts=4:sw=4:foldlevel=0
+// vim:ts=4:sw=4:foldlevel=999
